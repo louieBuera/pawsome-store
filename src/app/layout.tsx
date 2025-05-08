@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import localFont from 'next/font/local'
 import "./globals.css";
+import { getServerSession } from "next-auth/next"
+import SessionProvider from '@/components/SessionProvider';
 
 const workSans = localFont({
   src: [
@@ -51,17 +53,19 @@ export const metadata: Metadata = {
   description: "See Puppies, Order Pet Supplies",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession()
+
   return (
     <html lang="en">
-      <body
-        className={workSans.variable}
-      >
-        {children}
+      <body className={workSans.variable}>
+        <SessionProvider session={session}>
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );
