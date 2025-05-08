@@ -2,7 +2,7 @@ export const imageURLs: { [key: string]: string} = {
   splash: "/assets/images/pexels-nord6-7324407.jpg"
 };
 
-interface ImageDetails {
+export interface ImageDetails {
   src: string;
   alt: string;
   width: number;
@@ -14,7 +14,7 @@ export const images: { [key: string]: ImageDetails} = {
     src: "/assets/images/pexels-nord6-7324407.jpg",
     alt: "Puppies in pickup truck",
     width: 5215,
-    height: 3481
+    height: 1449
   },
   image1: {
     src: '/assets/images/pexels-goochie-poochie-3361739.jpg',
@@ -33,5 +33,11 @@ export const images: { [key: string]: ImageDetails} = {
     width: 3456,
     height: 4150,
     alt: 'Cavalier King Charles Spaniel'
+  },
+  cats1: {
+    src: '/assets/images/pexels-wojciech-kumpicki-1084687-2071873.jpg',
+    width: 3456,
+    height: 4150,
+    alt: 'Orange Tabby'
   }
 };
