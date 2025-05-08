@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image';
-import { images, imageURLs } from '@/constants/images';
+import { images } from '@/constants/images';
 
 const { splash } = images;
 
