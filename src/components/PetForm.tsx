@@ -27,7 +27,13 @@ function PetForm() {
 
     try {
       await petFormSchema.parseAsync(formValues)
-      const result = await addPet(prevState, formData);
+      const { name } = await addPet(prevState, formData);
+      toast(<div>
+        <h1 className='text-green-500 text-2xl font-semibold'>Success</h1>
+        <h2 className='text-green-900 text-lg font-medium'>
+          { name } has been added to the roster!
+        </h2>
+      </div>)
     } catch (error) {
       if(error instanceof z.ZodError) {
         const fieldErrors = error.flatten().fieldErrors;
