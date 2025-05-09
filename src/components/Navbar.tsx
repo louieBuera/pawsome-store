@@ -2,6 +2,7 @@ import React from 'react'
 
 import Link from 'next/link';
 import SessionButton from '@/components/SessionButton';
+import SessionChecker from '@/components/SessionChecker';
 
 function Navbar() {
   return (
@@ -11,10 +12,12 @@ function Navbar() {
           Home
           {/* <Image src="/next.svg" alt="logo" width={144} height={30}/> */}
         </Link>
-        <Link href="/pets" className='text3xl m-5 font-semibold'>
-          Pets
-          {/* <Image src="/next.svg" alt="logo" width={144} height={30}/> */}
-        </Link>
+        <SessionChecker>
+          <Link href="/pets" className='text3xl m-5 font-semibold'>
+            Pets
+            {/* <Image src="/next.svg" alt="logo" width={144} height={30}/> */}
+          </Link>
+        </SessionChecker>
         <SessionButton className='m-3 flex flex-row'/>
       </nav>
     </header>
