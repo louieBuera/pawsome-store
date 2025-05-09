@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar'
 
 import "@/app/globals.css";
 // import { Toaster } from '@/components/ui/toaster';
+import { ToastContainer } from 'react-toastify';
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -12,6 +13,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
         
         { children }
         {/* <Toaster /> */}
+        <ToastContainer />
       </main>
     </>
   )

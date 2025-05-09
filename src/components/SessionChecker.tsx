@@ -1,3 +1,5 @@
+"use server"
+
 import { getServerSession, Session } from 'next-auth';
 import React from 'react'
 import { authOptions } from '@/auth';

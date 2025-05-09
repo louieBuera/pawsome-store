@@ -1,9 +1,5 @@
+import { Species } from "@/types/species";
 import mongoose from "mongoose";
-
-export enum Species {
-  DOG = 'Dog',
-  CAT = 'Cat',
-}
 
 export interface Pets extends mongoose.Document {
   name: string;
@@ -18,6 +14,7 @@ const PetSchema = new mongoose.Schema<Pets>({
   name: {
     type: String,
     required: [true, "Please provide a name for this pet"],
+    minLength: [3, "Name cannot be shorter than 3 characters"],
     maxLength: [60, "Name cannot be more than 60 characters"]
   },
   species: {
@@ -28,6 +25,7 @@ const PetSchema = new mongoose.Schema<Pets>({
   breed: {
     type: String,
     required: [true, "Please breed a name for this pet"],
+    minLength: [3, "Breed cannot be shorter than 3 characters"],
     maxLength: [60, "Breed cannot be more than 60 characters"]
   },
   image_url: {
