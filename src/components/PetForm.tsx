@@ -8,6 +8,7 @@ import { z } from 'zod';
 // import { useToast } from "@/hooks/use-toast";
 import { toast } from 'react-toastify';
 import { Send } from 'lucide-react';
+import { addPet } from '@/lib/actions';
 
 function PetForm() {
   const [ errors, setErrors ] = useState<Record<string, string>>({});
@@ -26,6 +27,7 @@ function PetForm() {
 
     try {
       await petFormSchema.parseAsync(formValues)
+      const result = await addPet(prevState, formData);
     } catch (error) {
       if(error instanceof z.ZodError) {
         const fieldErrors = error.flatten().fieldErrors;
@@ -76,6 +78,45 @@ function PetForm() {
         />
         { errors.name && <p className="text-red-500 mt-2 ml-5">
           { errors.name }
+        </p> }
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="name" className='font-bold text-[18px] text-black uppercase'>Species</label>
+        <select name="species" id="species"
+          className="border-[3px] border-black px-3 py-2 text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300"
+          defaultValue={ state?.formValues?.species }
+        >
+          <option>{ Species.DOG }</option>
+          <option>{ Species.CAT }</option>
+        </select>
+        { errors.species && <p className="text-red-500 mt-2 ml-5">
+          { errors.species }
+        </p> }
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="breed" className='font-bold text-[18px] text-black uppercase'>Breed</label>
+        <input type="text" id="breed"
+          defaultValue={ state?.formValues?.breed }
+          name="breed"
+          className="border-[3px] border-black px-3 py-2 text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300"
+          required
+          placeholder='Enter Pet Breed'
+        />
+        { errors.breed && <p className="text-red-500 mt-2 ml-5">
+          { errors.breed }
+        </p> }
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="image_url" className='font-bold text-[18px] text-black uppercase'>Image Link</label>
+        <input type="text" id="name"
+          defaultValue={ state?.formValues?.image_url }
+          name="image_url"
+          className="border-[3px] border-black px-3 py-2 text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300"
+          required
+          placeholder='Enter Pet Name'
+        />
+        { errors.name && <p className="text-red-500 mt-2 ml-5">
+          { errors.image_url }
         </p> }
       </div>
       <button type="submit" className="flex flex-row p-3 border rounded text-white bg-amber-400"

@@ -14,6 +14,6 @@ export const petFormSchema = z.object({
       return false;
     }
   }),
-  width: z.number().positive().lte(10000),
-  height: z.number().positive().lte(10000)
+  // width: z.number().positive().lte(10000),
+  // height: z.number().positive().lte(10000)
 });
