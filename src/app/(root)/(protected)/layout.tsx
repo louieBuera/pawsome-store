@@ -1,6 +1,6 @@
 import { getServerSession, Session } from 'next-auth';
 import { redirect } from 'next/navigation';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/auth';
 
 async function Layout(
   { children }: Readonly<{ children: React.ReactNode }>
