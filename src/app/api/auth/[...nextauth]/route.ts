@@ -13,7 +13,7 @@ export const authOptions: NextAuthOptions = {
     // ...add more providers here
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn({ user }) {
       const isAllowedToSignIn = true
       const allowedEmail = process.env.ALLOWED_EMAIL;
 
